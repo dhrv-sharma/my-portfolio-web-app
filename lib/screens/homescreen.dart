@@ -1,6 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/constant.dart';
+import 'package:portfolio_web/project.dart';
+import 'package:portfolio_web/reccomndation.dart';
 import 'package:portfolio_web/screens/mainScreen.dart';
 
 class homeScreen extends StatelessWidget {
@@ -8,7 +10,217 @@ class homeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return mainScreen(childrn: const [homeBanner()]);
+    return mainScreen(childrn: [
+      const homeBanner(),
+      const highLightInfo(),
+      // My projects section
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            "My Projects",
+            style:
+                Theme.of(context).textTheme.headline6!.copyWith(fontSize: 20),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: defaultPadding / 2)
+                .copyWith(right: 10),
+            child: GridView.builder(
+                shrinkWrap: true,
+                physics:
+                    const NeverScrollableScrollPhysics(), // it let the scrollable internal to be none
+                itemCount:
+                    demo_projects.length, // length of list in demo projects
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio:
+                        1.3, //it suggests that the width of the child element is 1.3 times the height.
+                    crossAxisSpacing: defaultPadding,
+                    mainAxisSpacing: defaultPadding),
+                itemBuilder: (context, index) => Container(
+                      padding: const EdgeInsets.all(defaultPadding),
+                      decoration: BoxDecoration(
+                          color: secondaryColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            demo_projects[index].title.toString(),
+                            maxLines: 2,
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
+                          const Spacer(),
+                          Text(
+                            demo_projects[index].description.toString(),
+                            style: const TextStyle(height: 1.5),
+                            maxLines: 5,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const Spacer(),
+                          TextButton(
+                              onPressed: () {
+                                // github links to respective projects
+                              },
+                              child: const Text(
+                                "Read More >>",
+                                style: TextStyle(color: primaryColor),
+                              ))
+                        ],
+                      ),
+                    )),
+          )
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: defaultPadding)
+                .copyWith(bottom: defaultPadding / 2),
+            child: Column(
+              children: [
+                Text(
+                  "Visionary",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+
+      // we can use horizontal scroll view as well in single scroll view
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(
+              demo_recommendations.length,
+              (index) => Container(
+                    width: 400,
+                    margin: const EdgeInsets.symmetric(horizontal: 10)
+                        .copyWith(left: 0),
+                    padding: const EdgeInsets.all(defaultPadding),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: secondaryColor),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          demo_recommendations[index].name.toString(),
+                          style: Theme.of(context).textTheme.subtitle2,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          demo_recommendations[index].source.toString(),
+                        ),
+                        const SizedBox(
+                          height: defaultPadding,
+                        ),
+                        Text(
+                          demo_recommendations[index].text.toString(),
+                          maxLines: 6,
+                          overflow: TextOverflow.fade,
+                          style: const TextStyle(height: 1.5),
+                        )
+                      ],
+                    ),
+                  )),
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      )
+    ]);
+  }
+}
+
+class highLightInfo extends StatelessWidget {
+  const highLightInfo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+              vertical: defaultPadding / 2, horizontal: 10)
+          .copyWith(left: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          heightLight(
+            value: 150,
+            title: "DSA Resolved",
+          ),
+          heightLight(
+            value: 15,
+            title: "Repos",
+          ),
+          heightLight(
+            value: 160,
+            title: "Contributions",
+          ),
+          heightLight(
+            value: 8,
+            title: "Projects",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class heightLight extends StatelessWidget {
+  heightLight({super.key, this.value, this.title});
+
+  int? value;
+  String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        inttween(
+          value: value,
+          title: "+",
+        ),
+        const SizedBox(
+          width: defaultPadding / 2,
+        ),
+        Text(
+          "$title",
+          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 17),
+        )
+      ],
+    );
+  }
+}
+
+class inttween extends StatelessWidget {
+  inttween({super.key, this.value, this.title});
+
+  int? value;
+  String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder(
+        tween: IntTween(begin: 0, end: value),
+        duration: const Duration(seconds: 2),
+        builder: (context, value, child) => Text(
+              "$value$title",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6!
+                  .copyWith(color: primaryColor),
+            ));
   }
 }
 

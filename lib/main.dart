@@ -1,8 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/constant.dart';
 import 'package:portfolio_web/screens/homescreen.dart';
-import 'package:portfolio_web/screens/mainScreen.dart';
 
 void main() {
   runApp(const MpApp());
@@ -14,6 +14,9 @@ class MpApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {PointerDeviceKind.mouse},
+      ),
       debugShowCheckedModeBanner: false,
       title: 'My Portfolio',
       // we are using dark theme

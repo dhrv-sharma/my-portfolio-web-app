@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/constant.dart';
+import 'package:portfolio_web/reccomndation.dart';
 import 'package:portfolio_web/screens/sidemenu.dart';
 
 class mainScreen extends StatefulWidget {
@@ -30,13 +31,15 @@ class _mainScreenState extends State<mainScreen> {
                 width: defaultPadding / 2,
               ),
               Expanded(
-                  // it will take 7 parts of availble space here totla will be 2 + 7 = 9 7/9 percent taken by this
-                  flex: 7,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [...widget.childrn],
-                    ),
-                  ))
+                // it will take 7 parts of availble space here totla will be 2 + 7 = 9 7/9 percent taken by this
+                flex: 7,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [...widget.childrn],
+                  ),
+                ),
+              )
             ],
           ),
         ),
