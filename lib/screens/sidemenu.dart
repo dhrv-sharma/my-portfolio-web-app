@@ -1,5 +1,6 @@
 // done through extract widget option in bulb icon
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio_web/constant.dart';
 
 class SideMenu extends StatelessWidget {
@@ -65,7 +66,7 @@ class SideMenu extends StatelessWidget {
                   ),
                   areaInfo(
                     title: "Age",
-                    text: "22",
+                    text: "19",
                   ),
                   const Divider(),
                   Padding(
@@ -105,6 +106,86 @@ class SideMenu extends StatelessWidget {
                         value: 0.64,
                       ))
                     ],
+                  ),
+                  const SizedBox(height: defaultPadding),
+                  const coding(),
+                  const Divider(),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: defaultPadding),
+                    child: Text(
+                      "Knowledges",
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                  ),
+                  knowledge(
+                    desc: "Flutter, Dart",
+                  ),
+                  knowledge(
+                    desc: "Firebase, Cloudinary",
+                  ),
+                  knowledge(
+                    desc: "Node.js,Express.js,Mongo Db",
+                  ),
+                  knowledge(
+                    desc: "Git,Github",
+                  ),
+                  knowledge(
+                    desc: "SQL,Docker",
+                  ),
+                  const Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FittedBox(
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            children: [
+                              Text(
+                                "DOWNLOAD CV",
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                        .color),
+                              ),
+                              const SizedBox(
+                                width: defaultPadding / 2,
+                              ),
+                              SvgPicture.asset("assets/images/download.svg")
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: defaultPadding / 2,
+                  ),
+                  // social media platform lninks
+                  Container(
+                    color: const Color(0xFF24242e),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              "assets/images/linkedin.svg",
+                            )),
+                        IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              "assets/images/github.svg",
+                            )),
+                        IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              "assets/images/twitter.svg",
+                            )),
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -116,6 +197,115 @@ class SideMenu extends StatelessWidget {
   }
 }
 
+// knowledge area
+class knowledge extends StatelessWidget {
+  knowledge({super.key, this.desc});
+
+  String? desc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: defaultPadding / 2),
+      child: Row(
+        children: [
+          SvgPicture.asset("assets/images/check.svg"),
+          const SizedBox(
+            width: defaultPadding / 2,
+          ),
+          Text("$desc")
+        ],
+      ),
+    );
+  }
+}
+
+// coding section
+class coding extends StatelessWidget {
+  const coding({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+          child: Text(
+            "Coding",
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+        ),
+        lineartween(
+          title: "Dart",
+          value: 0.80,
+        ),
+        lineartween(
+          title: "Firebase",
+          value: 0.78,
+        ),
+        lineartween(
+          title: "JavaScript",
+          value: 0.70,
+        ),
+        lineartween(
+          title: "C++",
+          value: 0.76,
+        ),
+        lineartween(
+          title: "SQL",
+          value: 0.62,
+        ),
+      ],
+    );
+  }
+}
+
+// linear tween animated used in coding section
+class lineartween extends StatelessWidget {
+  lineartween({super.key, this.title, this.value});
+
+  String? title;
+  double? value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: defaultPadding),
+      child: TweenAnimationBuilder(
+        tween: Tween<double>(begin: 0, end: value),
+        duration: defaultDuration,
+        builder: (context, double value, child) => Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "$title",
+                  style: const TextStyle(color: Colors.white),
+                ),
+                Text((value * 100).toInt().toString() + "%")
+              ],
+            ),
+            const SizedBox(
+              height: defaultPadding / 2,
+            ),
+            LinearProgressIndicator(
+              value: value,
+              color: primaryColor,
+              backgroundColor: darkColor,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// circular skill badge
 class skillbadge extends StatelessWidget {
   skillbadge({super.key, this.value, this.title});
   double? value;
@@ -164,6 +354,7 @@ class skillbadge extends StatelessWidget {
   }
 }
 
+// area info
 class areaInfo extends StatelessWidget {
   areaInfo({super.key, this.title, this.text});
 
