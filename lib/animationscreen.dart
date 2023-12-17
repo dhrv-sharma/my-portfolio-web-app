@@ -21,7 +21,7 @@ class _animateIntroState extends State<animateIntro> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              child: Text("Dhruv sharma",
+              child: Text("Dhruv Sharma",
                   style: Theme.of(context)
                       .textTheme
                       .headline6!

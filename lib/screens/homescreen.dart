@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/constant.dart';
+import 'package:portfolio_web/contactHome.dart';
 import 'package:portfolio_web/project.dart';
 import 'package:portfolio_web/reccomndation.dart';
 import 'package:portfolio_web/responsive.dart';
@@ -533,6 +534,10 @@ class homeBanner extends StatelessWidget {
                     : ElevatedButton(
                         onPressed: () {
                           // link to another porfolio
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const contactHome()));
                         },
                         style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(

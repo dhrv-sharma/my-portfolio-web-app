@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/animationscreen.dart';
 import 'package:portfolio_web/constant.dart';
+import 'package:portfolio_web/contactHome.dart';
 import 'package:portfolio_web/screens/homescreen.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class MpApp extends StatelessWidget {
                   bodyText1: const TextStyle(color: bodyTextColor),
                   // ignore: deprecated_member_use
                   bodyText2: const TextStyle(color: bodyTextColor))),
-      home: animateIntro(),
+      home: const contactHome(),
     );
   }
 }
