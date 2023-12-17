@@ -11,187 +11,190 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          // aspectRatio: This property is a ratio of width to height. It is used to specify the desired aspect ratio for the child widget. In your example, aspectRatio: 1.23 means that the width should be 1.23 times the height.
-          // profile details
-          AspectRatio(
-            aspectRatio: 1.23,
-            child: Container(
-              color: const Color(0xFF242430),
-              child: Column(
-                children: [
-                  const Spacer(
-                    flex: 2,
-                  ),
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage("assets/images/pic.jpg"),
-                  ),
-                  const Spacer(),
-                  Text(
-                    "Dhruv Sharma",
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2, // subtitle 2 theme get implemented
-                  ),
-                  const Text(
-                    "Flutter Developer & SDE \n Velllore Institute Of Technology ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.w200, height: 1.5),
-                  ),
-                  const Spacer(
-                    flex: 2,
-                  ),
-                ],
+      child: SafeArea(
+        child: Column(
+          children: [
+            // aspectRatio: This property is a ratio of width to height. It is used to specify the desired aspect ratio for the child widget. In your example, aspectRatio: 1.23 means that the width should be 1.23 times the height.
+            // profile details
+            AspectRatio(
+              aspectRatio: 1.23,
+              child: Container(
+                color: const Color(0xFF242430),
+                child: Column(
+                  children: [
+                    const Spacer(
+                      flex: 2,
+                    ),
+                    const CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage("assets/images/pic.jpg"),
+                    ),
+                    const Spacer(),
+                    Text(
+                      "Dhruv Sharma",
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2, // subtitle 2 theme get implemented
+                    ),
+                    const Text(
+                      "App Developer & SDE \n Velllore Institute Of Technology ",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w200, height: 1.5),
+                    ),
+                    const Spacer(
+                      flex: 2,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          // area info
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(
-                defaultPadding,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  areaInfo(
-                    title: "Residence",
-                    text: "Karnataka,India",
-                  ),
-                  areaInfo(
-                    title: "City",
-                    text: "Manipal",
-                  ),
-                  areaInfo(
-                    title: "Age",
-                    text: "19",
-                  ),
-                  const Divider(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: defaultPadding / 2,
+            // area info
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(
+                  defaultPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    areaInfo(
+                      title: "Residence",
+                      text: "Karnataka,India",
                     ),
-                    child: Text(
-                      "Skills",
-                      style: Theme.of(context).textTheme.subtitle2,
-                      textAlign: TextAlign.start,
+                    areaInfo(
+                      title: "City",
+                      text: "Manipal",
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: skillbadge(
-                        title: "Flutter",
-                        value: 0.8,
-                      )),
-                      const SizedBox(
-                        width: defaultPadding,
-                      ),
-                      Expanded(
-                          child: skillbadge(
-                        title: "Java",
-                        value: 0.75,
-                      )),
-                      const SizedBox(
-                        width: defaultPadding,
-                      ),
-                      Expanded(
-                          child: skillbadge(
-                        title: "Node Js",
-                        value: 0.64,
-                      ))
-                    ],
-                  ),
-                  const SizedBox(height: defaultPadding),
-                  const coding(),
-                  const Divider(),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
-                    child: Text(
-                      "Knowledges",
-                      style: Theme.of(context).textTheme.subtitle2,
+                    areaInfo(
+                      title: "Age",
+                      text: "19",
                     ),
-                  ),
-                  knowledge(
-                    desc: "Flutter, Dart",
-                  ),
-                  knowledge(
-                    desc: "Firebase, Cloudinary",
-                  ),
-                  knowledge(
-                    desc: "Node.js,Express.js,Mongo Db",
-                  ),
-                  knowledge(
-                    desc: "Git,Github",
-                  ),
-                  knowledge(
-                    desc: "SQL,Docker",
-                  ),
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FittedBox(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            children: [
-                              Text(
-                                "DOWNLOAD CV",
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1!
-                                        .color),
-                              ),
-                              const SizedBox(
-                                width: defaultPadding / 2,
-                              ),
-                              SvgPicture.asset("assets/images/download.svg")
-                            ],
-                          ),
-                        ),
+                    const Divider(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: defaultPadding / 2,
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: defaultPadding / 2,
-                  ),
-                  // social media platform lninks
-                  Container(
-                    color: const Color(0xFF24242e),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      child: Text(
+                        "Skills",
+                        style: Theme.of(context).textTheme.subtitle2,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Row(
                       children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/linkedin.svg",
-                            )),
-                        IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/github.svg",
-                            )),
-                        IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/twitter.svg",
-                            )),
+                        Expanded(
+                            child: skillbadge(
+                          title: "Flutter",
+                          value: 0.8,
+                        )),
+                        const SizedBox(
+                          width: defaultPadding,
+                        ),
+                        Expanded(
+                            child: skillbadge(
+                          title: "Java",
+                          value: 0.75,
+                        )),
+                        const SizedBox(
+                          width: defaultPadding,
+                        ),
+                        Expanded(
+                            child: skillbadge(
+                          title: "Node Js",
+                          value: 0.64,
+                        ))
                       ],
                     ),
-                  )
-                ],
+                    const SizedBox(height: defaultPadding),
+                    const coding(),
+                    const Divider(),
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: defaultPadding),
+                      child: Text(
+                        "Knowledges",
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ),
+                    ),
+                    knowledge(
+                      desc: "Flutter, Dart",
+                    ),
+                    knowledge(
+                      desc: "Firebase, Cloudinary",
+                    ),
+                    knowledge(
+                      desc: "Node.js,Express.js,Mongo Db",
+                    ),
+                    knowledge(
+                      desc: "Git,Github",
+                    ),
+                    knowledge(
+                      desc: "SQL,Docker",
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FittedBox(
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Text(
+                                  "DOWNLOAD CV",
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .color),
+                                ),
+                                const SizedBox(
+                                  width: defaultPadding / 2,
+                                ),
+                                SvgPicture.asset("assets/images/download.svg")
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: defaultPadding / 2,
+                    ),
+                    // social media platform lninks
+                    Container(
+                      color: const Color(0xFF24242e),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                "assets/images/linkedin.svg",
+                              )),
+                          IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                "assets/images/github.svg",
+                              )),
+                          IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                "assets/images/twitter.svg",
+                              )),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
