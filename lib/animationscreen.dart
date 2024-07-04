@@ -33,7 +33,7 @@ class _animateIntroState extends State<animateIntro> {
                       MaterialPageRoute(builder: (context) => homeScreen()));
                 },
                 tween: Tween<double>(begin: 0, end: 10),
-                duration: defaultDuration * 3,
+                duration: defaultDuration * 1.5,
                 builder: (context, double value, child) => Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
