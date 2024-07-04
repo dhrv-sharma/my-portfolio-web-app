@@ -5,6 +5,7 @@ import 'package:portfolio_web/project.dart';
 import 'package:portfolio_web/reccomndation.dart';
 import 'package:portfolio_web/responsive.dart';
 import 'package:portfolio_web/screens/mainScreen.dart';
+import 'package:portfolio_web/screens/webView.dart';
 
 class homeScreen extends StatelessWidget {
   homeScreen({super.key});
@@ -19,6 +20,9 @@ class homeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const SizedBox(
+            height: 5,
+          ),
           Text(
             "My Projects",
             style:
@@ -72,6 +76,8 @@ class homeScreen extends StatelessWidget {
                               TextButton(
                                   onPressed: () {
                                     // github links to respective projects
+                                    webView.openExternalApplication(
+                                        demo_projects[index].link.toString());
                                   },
                                   child: const Text(
                                     "Read More >>",
@@ -124,6 +130,8 @@ class homeScreen extends StatelessWidget {
                               TextButton(
                                   onPressed: () {
                                     // github links to respective projects
+                                    webView.openExternalApplication(
+                                        demo_projects[index].link.toString());
                                   },
                                   child: const Text(
                                     "Read More >>",
@@ -176,6 +184,8 @@ class homeScreen extends StatelessWidget {
                               TextButton(
                                   onPressed: () {
                                     // github links to respective projects
+                                    webView.openExternalApplication(
+                                        demo_projects[index].link.toString());
                                   },
                                   child: const Text(
                                     "Read More >>",
@@ -188,8 +198,7 @@ class homeScreen extends StatelessWidget {
               // 3 1.3
               desktop: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: defaultPadding / 2)
-                        .copyWith(right: 10),
+                    const EdgeInsets.symmetric(vertical: 0).copyWith(right: 10),
                 child: GridView.builder(
                     shrinkWrap: true,
                     physics:
@@ -229,6 +238,8 @@ class homeScreen extends StatelessWidget {
                               TextButton(
                                   onPressed: () {
                                     // github links to respective projects
+                                    webView.openExternalApplication(
+                                        demo_projects[index].link.toString());
                                   },
                                   child: const Text(
                                     "Read More >>",
@@ -533,6 +544,8 @@ class homeBanner extends StatelessWidget {
                     : ElevatedButton(
                         onPressed: () {
                           // link to another porfolio
+                          webView.openExternalApplication(
+                              "https://github.com/dhrv-sharma");
                         },
                         style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(

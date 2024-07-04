@@ -19,7 +19,7 @@ class MpApp extends StatelessWidget {
         dragDevices: {PointerDeviceKind.mouse},
       ),
       debugShowCheckedModeBanner: false,
-      title: 'My Portfolio',
+      title: 'dhrv_Sharma',
       // we are using dark theme
       theme: ThemeData.dark().copyWith(
           primaryColor:

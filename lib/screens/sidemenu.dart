@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio_web/constant.dart';
+import 'package:portfolio_web/screens/webView.dart';
+import 'package:simple_icons/simple_icons.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -141,7 +143,10 @@ class SideMenu extends StatelessWidget {
                       children: [
                         FittedBox(
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              webView.openExternalApplication(
+                                  "https://drive.google.com/file/d/1xptls2mPXxSk_yvvMqFoTjvQDCe8J-xR/view?usp=sharing");
+                            },
                             child: Row(
                               children: [
                                 Text(
@@ -172,19 +177,31 @@ class SideMenu extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           IconButton(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "assets/images/linkedin.svg",
+                              onPressed: () {
+                                webView.openExternalApplication(
+                                    "https://www.linkedin.com/in/dhruv-sharma-5a5b12217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app");
+                              },
+                              icon: const Icon(
+                                SimpleIcons.linkedin,
+                                color: SimpleIconColors.linkedin,
                               )),
                           IconButton(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "assets/images/github.svg",
+                              onPressed: () {
+                                webView.openExternalApplication(
+                                    "https://github.com/dhrv-sharma");
+                              },
+                              icon: const Icon(
+                                SimpleIcons.git,
+                                color: SimpleIconColors.git,
                               )),
                           IconButton(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "assets/images/twitter.svg",
+                              onPressed: () {
+                                webView.openExternalApplication(
+                                    "https://leetcode.com/u/dhrv_sharma/");
+                              },
+                              icon: const Icon(
+                                SimpleIcons.leetcode,
+                                color: SimpleIconColors.leetcode,
                               )),
                         ],
                       ),
